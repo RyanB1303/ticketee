@@ -1,0 +1,15 @@
+<h1>New Project</h1>
+<%= form_with(model: @project, local: true) do |f| %>
+    <div>
+      <%= f.label :name, "Name" %>
+      <%= f.text_field :name %>
+    </div>
+    
+    <div>
+      <%= f.label :description, "Description" %>
+      <%= f.text_field :description %>
+    </div>
+    
+    <%= f.submit "Create Project", disable_with: "Creating..." %>
+<% end %>
+  
