@@ -34,7 +34,7 @@ gem 'bootstrap', '~> 5.1'
 
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.6'
 
-
+gem "bootstrap_form", git: "https://github.com/bootstrap-ruby/bootstrap_form.git", branch: "bootstrap-5"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
