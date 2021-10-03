@@ -5,15 +5,15 @@ class ProjectsController < ApplicationController
   def index
     @projects = Project.all
   end
-  
+
   def show
 
   end
-  
+
   def new
     @project = Project.new
   end
-  
+
   def create
     @project = Project.new(project_params)
     if @project.save
@@ -24,11 +24,11 @@ class ProjectsController < ApplicationController
       render 'new'
     end
   end
-  
+
   def edit
 
   end
-  
+
   def update
 
     if @project.update(project_params)
@@ -39,7 +39,7 @@ class ProjectsController < ApplicationController
       render 'edit'
     end
   end
-  
+
   def destroy
 
     if @project.destroy
@@ -50,19 +50,19 @@ class ProjectsController < ApplicationController
       redirect_to projects_url
     end
   end
-  
-  
+
+
   private
-  
+
   def project_params
     params.require(:project).permit(:name, :description)
   end
-  
+
   def set_project
     @project = Project.find(params[:id])
   rescue ActiveRecord::RecordNotFound
     flash[:alert] = "The project you are looking for could not be found"
     redirect_to projects_path
   end
-  
+
 end

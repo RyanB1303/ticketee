@@ -30,8 +30,8 @@
 
 
 <ul class="tickets">
-  <%= @project.tickets.each do |ticket| %>
-    <li>#<%= ticket.id %> - 
+  <% @project.tickets.each do |ticket| %>
+    <li>#<%= ticket.id %> -
     <%= link_to ticket.name, [@project, ticket] %>
     </li>
   <% end %>
