@@ -69,5 +69,6 @@ RSpec.configure do |config|
     /lib\/rspec\/(core|expectations|matchers|mocks)/
   ]
   config.include Warden::Test::Helpers, type: :feature
+  config.include Warden::Test::Helpers, type: :request
   config.after(type: :feature) { Warden.test_reset! }
 end
