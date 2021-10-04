@@ -2,6 +2,7 @@
 <header>
   <h1><%= @project.name %></h1>
 
+  <% admins_only do %>
   <ul class="actions">
     <li>
     <%= link_to "Edit Project", edit_admin_project_path(@project),
@@ -13,6 +14,7 @@
       class: "delete" %>
     </li>
   </ul>
+  <% end %>
 </header>
 
 <p><%= @project.description %></p>
