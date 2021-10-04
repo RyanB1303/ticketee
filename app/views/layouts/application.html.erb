@@ -29,6 +29,15 @@
         <li class="nav-item">
             <%= link_to 'Home', root_path, class: "nav-link #{"active" if current_page?("/")}"  %>
         </li>
+        <% admins_only do %>
+        <li>
+          <%= link_to "Admin", admin_root_path, class: "nav-link #{"active" if current_page?("/admin")}" %>
+        </li>
+        <h5 class="text-uppercase mt-4">Admin Links</h5>
+        <ul class="nav flex-column">
+          <li><%= link_to 'Users', admin_users_path %></li>
+        </ul>
+        <% end %>
         <% unless user_signed_in? %>
         <li class="nav-item">
           <%= link_to  "Sign up", new_user_registration_path, class: "nav-link #{"active" if current_page?("/users/sign_up")}" %>
