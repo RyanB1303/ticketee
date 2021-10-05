@@ -7,11 +7,10 @@ RSpec.feature 'Users can comments on tickets' do
   
   before do
     login_as(user)
-    visit project_ticket_path(project, ticket)
   end
   
   scenario 'with valid attributes' do
-    
+    visit project_ticket_path(project, ticket)
     within('.comments') do
       fill_in "Text",	with: "Added a comment!" 
       click_button 'Create Comment'
@@ -25,8 +24,24 @@ RSpec.feature 'Users can comments on tickets' do
   end
   
   scenario 'with invalid attributes' do 
+    visit project_ticket_path(project, ticket)
     click_button 'Create Comment'
     expect(page).to have_content 'Comment has not been created.' 
+  end
+  
+  scenario "when changing a ticket's state" do
+    FactoryBot.create(:state, name: "Open")
+    visit project_ticket_path(project, ticket)
+    within(".comments") do
+      fill_in "Text", with: "This is a real issue"
+      select "Open", from: "State"
+      click_button "Create Comment"
+    end
+    
+    expect(page).to have_content "Comment has been created."
+    within(".ticket .attributes .state") do
+      expect(page).to have_content "Open" 
+    end
   end
   
 end
