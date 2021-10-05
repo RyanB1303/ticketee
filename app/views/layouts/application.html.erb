@@ -14,6 +14,7 @@
 
     <%= stylesheet_link_tag "application", media: "all", 'data-turbolinks-track': "reload" %>
     <%= javascript_pack_tag "application", 'data-turbolinks-track': "reload" %>
+    <%= stylesheet_pack_tag "application", 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
@@ -33,10 +34,6 @@
         <li>
           <%= link_to "Admin", admin_root_path, class: "nav-link #{"active" if current_page?("/admin")}" %>
         </li>
-        <h5 class="text-uppercase mt-4">Admin Links</h5>
-        <ul class="nav flex-column">
-          <li><%= link_to 'Users', admin_users_path %></li>
-        </ul>
         <% end %>
         <% unless user_signed_in? %>
         <li class="nav-item">
