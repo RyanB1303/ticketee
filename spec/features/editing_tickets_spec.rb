@@ -28,4 +28,20 @@ RSpec.feature 'User can edit existing ticket' do
 
     expect(page).to have_content 'Ticket has not been updated.'
   end
+
+  scenario 'with multiple attachments', js:true do
+    click_link "Edit Ticket"
+    attach_file 'spec/fixtures/spin.txt', class: 'dz-hidden-input', visible: false
+    expect(page).to have_content 'spin.txt'
+    
+    click_button 'Update Ticket'
+    
+    expect(page).to have_content 'Ticket has been updated.' 
+    
+    within(".ticket .attachments") do
+      expect(page).to have_content 'spin.txt' 
+    end
+    
+  end
+
 end
