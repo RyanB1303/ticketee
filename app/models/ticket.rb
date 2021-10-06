@@ -12,6 +12,9 @@ class Ticket < ApplicationRecord
   has_and_belongs_to_many :watchers,
     join_table: "ticket_watchers",
     class_name: "User"
+  
+  has_many :comments, dependent: :destroy
+  has_and_belongs_to_many :tags
 
   before_create :assign_default_state
   
