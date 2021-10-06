@@ -1,4 +1,8 @@
 class State < ApplicationRecord
+  
+  def self.default
+    find_by(default: true)
+  end
 
   def to_s
     name
@@ -8,5 +12,7 @@ class State < ApplicationRecord
     State.update_all(default: false)
     update!(default: true)
   end
+  
+  
 
 end

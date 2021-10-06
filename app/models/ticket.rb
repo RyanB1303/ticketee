@@ -9,4 +9,13 @@ class Ticket < ApplicationRecord
   
   has_many :comments, dependent: :destroy
 
+  before_create :assign_default_state
+  
+  private
+  
+  def assign_default_state
+    self.state ||= State.default
+  end
+  
+
 end
