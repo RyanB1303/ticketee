@@ -8,6 +8,10 @@ class Ticket < ApplicationRecord
   has_many_attached :attachments
   
   has_many :comments, dependent: :destroy
+  
+  has_and_belongs_to_many :watchers,
+    join_table: "ticket_watchers",
+    class_name: "User"
 
   before_create :assign_default_state
   
