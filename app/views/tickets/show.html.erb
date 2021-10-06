@@ -19,7 +19,18 @@
     </tr>
   <% end %>
   
+  <tr>
+    <th>Watchers:</th>
+    <td class="watchers">
+      <%= toggle_watching_button(@ticket) %>
+      <%= @ticket.watchers.map(&:email).to_sentence %>
+    </td>
+  </tr>
+  
+  
 </table>
+
+<%= simple_format(@ticket.description) %>
 
 <hr>
   <h2><%= @ticket.name %></h2>
@@ -30,7 +41,6 @@
     data: { confirm: 'Are you sure you want to delete this ticket?' } %></li>
   </ul>
 
-<%= simple_format(@ticket.description) %>
 
 
 <% if @ticket.attachments.present? %>
