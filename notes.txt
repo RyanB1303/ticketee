@@ -1,0 +1,4 @@
+error on windows test and wsl
+# could not find file -> selenium problem
+/spec/features/creating_tickets_spec.rb
+/spec/features/editing_tickets_spec.rb

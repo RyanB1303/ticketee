@@ -1,5 +1,4 @@
 module TicketsHelper
-
   def toggle_watching_button(ticket)
     text = if ticket.watchers.include?(current_user)
       "Unwatch"

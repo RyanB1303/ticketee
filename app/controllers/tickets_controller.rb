@@ -1,6 +1,6 @@
 class TicketsController < ApplicationController
   before_action :set_project
-  before_action :set_ticket, only: %i[edit update show destroy]
+  before_action :set_ticket, only: %i[edit update show destroy watch]
 
   def new
     @ticket = @project.tickets.build
@@ -51,8 +51,7 @@ class TicketsController < ApplicationController
     blob = ActiveStorage::Blob.create_and_upload!(io: params[:file], filename: params[:file].original_filename)
     render json: { signedId: blob.signed_id }
   end
-  
-  
+
   def watch
     if @ticket.watchers.exists?(current_user.id)
       @ticket.watchers.destroy(current_user)
