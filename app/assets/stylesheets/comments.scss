@@ -4,7 +4,7 @@
 @import "bootstrap";
 
 .comment {
-	@extend .border, .rounded;
+	@extend .border, .rounded, .mb-2;
 	border-width: 2px;
 
 	.author {
@@ -20,5 +20,9 @@
 
 	p:last-of-type {
 		margin-bottom: 0;
+	}
+
+	+ .state_change {
+		@extend .my-2;
 	}
 }
