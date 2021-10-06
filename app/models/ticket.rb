@@ -17,12 +17,15 @@ class Ticket < ApplicationRecord
   has_and_belongs_to_many :tags
 
   before_create :assign_default_state
-  
+
+  searcher do
+    label :tag, from: :tags, field: "name"
+  end
+
   private
   
   def assign_default_state
     self.state ||= State.default
   end
-  
 
 end
