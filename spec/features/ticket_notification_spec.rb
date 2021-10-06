@@ -42,5 +42,26 @@ RSpec.feature "Users can recieve notifications about ticket updates" do
   
   end
   
+  scenario "comment authors are automatically subscibed to a ticket" do
+    fill_in "Text",	with: "Is it out yet?"
+    click_button "Create Comment"
+    
+    perform_enqueued_jobs
+    
+    click_link "Sign out"
+    
+    reset_mailer
+    
+    login_as(alice)
+    visit project_ticket_path(project, ticket)
+    fill_in "Text",	with: "Not yet - sorry!"
+    click_button "Create Comment"
+    
+    perform_enqueued_jobs
+    
+    expect(page).to have_content "Comment has been created."
+    expect(unread_emails_for(bob.email).count).to eq 1
+    expect(unread_emails_for(alice.email).count).to eq 0
+  end
   
 end
