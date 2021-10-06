@@ -30,7 +30,7 @@ RSpec.feature 'Users can comments on tickets' do
   end
   
   scenario "when changing a ticket's state" do
-    # FactoryBot.create(:state, name: "Open")
+    FactoryBot.create(:state, name: "Open")
     visit project_ticket_path(project, ticket)
     
     within(".comments") do

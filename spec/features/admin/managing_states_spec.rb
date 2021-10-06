@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.feature "Admins can manage states" do
-  let(:state) { FactoryBot.create :state, name: "New" } 
+  let!(:state) { FactoryBot.create :state, name: "New" } 
   
   before do
     login_as(FactoryBot.create(:user, :admin))
@@ -15,8 +15,5 @@ RSpec.feature "Admins can manage states" do
     
     expect(page).to have_content "'New' is now the default state." 
   end
-  
-  
-  
   
 end
