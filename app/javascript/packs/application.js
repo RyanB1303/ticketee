@@ -12,6 +12,7 @@ import 'popper.js'
 import 'bootstrap'
 require("bootstrap")
 require("../src/dropzone")
+require("../src/tags")
 
 Rails.start()
 Turbolinks.start()
