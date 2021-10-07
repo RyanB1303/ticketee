@@ -3,5 +3,5 @@
     ticket_remove_tag_path(ticket, tag), method: :delete, remote: true,
     class: "remove",
     title: "Remove Tag"  %>
-  <%= tag.name %>
+  <%= link_to tag.name, search_project_tickets_path(ticket.project, search: %Q{tag:"#{tag.name}"}) %>
 </div>
